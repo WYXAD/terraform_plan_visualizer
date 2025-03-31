@@ -16,9 +16,9 @@ document.getElementById('visualize-btn').addEventListener('click', function() {
         if (!line) return;
         
         if (line.startsWith('#') && (line.includes('will be created') || 
-                                     line.includes('will be updated') || 
-                                     line.includes('will be destroyed') || 
-                                     line.includes('must be replaced'))) {
+                                   line.includes('will be updated') || 
+                                   line.includes('will be destroyed') || 
+                                   line.includes('must be replaced'))) {
             if (currentBlock) outputDiv.appendChild(currentBlock);
             
             currentBlock = document.createElement('div');
@@ -52,5 +52,5 @@ document.getElementById('visualize-btn').addEventListener('click', function() {
         }
     });
     
-    if (currentBlock) outputDiv.appendChild(currentBlock);  // 这是之前缺失的完整行
+    if (currentBlock) outputDiv.appendChild(currentBlock);
 });
