@@ -15,7 +15,6 @@ document.getElementById('visualize-btn').addEventListener('click', function() {
         line = line.trim();
         if (!line) return;
         
-        // 解析资源块（创建/更新/销毁/替换）
         if (line.startsWith('#') && (line.includes('will be created') || 
                                      line.includes('will be updated') || 
                                      line.includes('will be destroyed') || 
@@ -32,13 +31,11 @@ document.getElementById('visualize-btn').addEventListener('click', function() {
             header.textContent = line;
             currentBlock.appendChild(header);
         } 
-        // 解析资源详情
         else if (line.startsWith('resource "') && currentBlock) {
             const resourceLine = document.createElement('div');
             resourceLine.textContent = line;
             currentBlock.appendChild(resourceLine);
         }
-        // 解析变更内容（含 -> 符号的行）
         else if (line.includes('->')) {
             if (!currentBlock) return;
             
@@ -55,4 +52,5 @@ document.getElementById('visualize-btn').addEventListener('click', function() {
         }
     });
     
-    if (currentBlock)
+    if (currentBlock) outputDiv.appendChild(currentBlock);  // 这是之前缺失的完整行
+});
