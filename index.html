@@ -3,16 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terraform Plan Visualizer</title>
+    <title>Terraform Diff Visualizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Terraform Plan Visualizer</h1>
-        <textarea id="terraform-input" placeholder="Paste your Terraform plan output here..."></textarea>
-        <button id="visualize-btn">Visualize</button>
-        <div id="output"></div>
+        <h1>Terraform Diff Visualizer</h1>
+        
+        <div class="controls">
+            <div class="diff-switch">
+                <label>
+                    <input type="checkbox" id="side-by-side"> Side-by-side View
+                </label>
+            </div>
+            <div class="show-options">
+                <label>Show:</label>
+                <label><input type="checkbox" class="show-option" data-type="create" checked> Create</label>
+                <label><input type="checkbox" class="show-option" data-type="update" checked> Update</label>
+                <label><input type="checkbox" class="show-option" data-type="destroy" checked> Destroy</label>
+                <label><input type="checkbox" class="show-option" data-type="replace" checked> Replace</label>
+            </div>
+        </div>
+
+        <div class="diff-container">
+            <textarea id="terraform-input" placeholder="Paste your Terraform plan output here..."></textarea>
+            <button id="visualize-btn">Visualize</button>
+            <div id="output" class="diff-output"></div>
+        </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script src="./script.js"></script>
 </body>
 </html>
